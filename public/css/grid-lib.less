@@ -1,0 +1,48 @@
+/* setup default values for all grid components */
+@vertical_rhythm: 20;
+@font_size: 12;
+
+@grid_columns: 24;
+@colun_width: 48px;
+@gutter_width: 12px;
+@cell_margin: @gutter_width / 2;
+
+@grid_min_width: 0px;
+@grid_max_width: 32767px;
+
+.box-sizing(@sizing: border-box){
+	-moz-box-sizing: @sizing;
+	-webkit-box-sizing: @sizing;
+	box-sizing: @sizing;
+}
+
+* {  
+	.box-sizing();
+}
+
+body{
+	.box-sizing(content-box);
+}
+
+.grid(@cols: 1) {
+
+  width: @cols * (@colun_width + @gutter_width);
+  min-width: @grid_min_width;
+  max-width: @grid_max_width;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.height(@cols: 1){
+  height: @cols * (@colun_width + @gutter_width) - @gutter_width;
+}
+
+.cell(@cols:1){
+  width: @cols * (@colun_width + @gutter_width) - @gutter_width;
+  margin: @cell_margin;
+  overflow: hidden;
+  float:left;
+  display:inline;
+  padding: 5px 0;
+}
+

@@ -1,0 +1,57 @@
+@import "grid-lib";
+
+body {
+	.grid(4);
+	border: 1px solid;
+}
+
+#toolbar li{
+	.cell(1);
+	background-color: #EEE;
+	text-align: center;
+}
+
+#toolbar li.search{
+	.cell(3);
+}
+
+/* From http://css-tricks.com/snippets/css/media-queries-for-standard-devices/ */
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+	body {
+		.grid(4)
+	}
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-width : 768px) {
+	body {
+		.grid(6)
+	}
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-width : 1024px) {
+	body {
+		.grid(12)
+	}
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1224px) {
+	body {
+		.grid(16)
+	}
+}
+
+/* Large screens ----------- */
+@media only screen and (min-width : 1824px) {
+}
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
+}
