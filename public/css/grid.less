@@ -1,18 +1,47 @@
 @import "grid-lib";
 
 body {
-	.grid(4);
-	border: 1px solid;
+	.grid(4,none);
+}
+
+#toolbar {
+	background-color: #FFFFCC;
+	float:left;
 }
 
 #toolbar li{
 	.cell(1);
+  	padding: 5px 0;	
 	background-color: #EEE;
 	text-align: center;
 }
 
 #toolbar li.search{
-	.cell(3);
+	.cell(3,1);
+}
+
+#menu{
+	.grid(4);
+	ul {
+		.cell();
+		li {
+			width: 100%;
+		  	padding: 5px 0;	
+			background-color: #EEE;
+			text-align: center;
+		}
+	}
+	background-color: #CCFFCC;
+}
+
+#main{
+	.grid(4);
+	background-color: #CCFFCC;
+}
+
+#footer{
+	background-color: #CCFFCC;
+	.cell(4);
 }
 
 /* From http://css-tricks.com/snippets/css/media-queries-for-standard-devices/ */
@@ -20,28 +49,62 @@ body {
 /* Smartphones (landscape) ----------- */
 @media only screen and (min-width : 321px) {
 	body {
-		.grid(4)
+		.grid(6,none)
+	}
+	#toolbar li.search{
+		.cell(4,2);
+	}	
+	#menu{
+		.grid(2);
+	}
+	#main{
+		.grid(4);
+	}
+	#footer{
+		.grid(6);
 	}
 }
 
 /* iPads (portrait) ----------- */
 @media only screen and (min-width : 768px) {
 	body {
-		.grid(6)
+		.grid(12,none)
 	}
+	#toolbar li.search{
+		.cell(4,8);
+	}	
+	#menu{
+		.grid(2);
+	}
+	#main{
+		.grid(10);
+	}
+	#footer{
+		.grid(12);
+	}
+
 }
 
 /* iPads (landscape) ----------- */
 @media only screen and (min-width : 1024px) {
-	body {
-		.grid(12)
-	}
 }
 
 /* Desktops and laptops ----------- */
 @media only screen and (min-width : 1224px) {
 	body {
-		.grid(16)
+		.grid(16,none)
+	}
+	#toolbar li.search{
+		.cell(4);
+	}	
+	#menu{
+		.grid(2);
+	}
+	#main{
+		.grid(14);
+	}
+	#footer{
+		.grid(16);
 	}
 }
 

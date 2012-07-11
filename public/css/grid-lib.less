@@ -22,27 +22,41 @@
 
 body{
 	.box-sizing(content-box);
+  margin: 0 auto;
 }
 
-.grid(@cols: 1) {
+.grid(@cols: 1, @float:left) {
 
   width: @cols * (@colun_width + @gutter_width);
   min-width: @grid_min_width;
   max-width: @grid_max_width;
   margin: 0 auto;
   text-align: left;
+  float:@float;
 }
 
 .height(@cols: 1){
   height: @cols * (@colun_width + @gutter_width) - @gutter_width;
 }
 
-.cell(@cols:1){
-  width: @cols * (@colun_width + @gutter_width) - @gutter_width;
-  margin: @cell_margin;
+.cell(){
+  
+}
+
+.cell{
   overflow: hidden;
   float:left;
   display:inline;
-  padding: 5px 0;
+  margin: @cell_margin;
+}
+
+.cell(@cols){
+  .cell(@cols,0);
+}
+
+.cell(@cols, @leaving){
+  .cell();
+  width: @cols * (@colun_width + @gutter_width) - @gutter_width;
+  margin: @cell_margin @cell_margin @cell_margin @cell_margin + @leaving * (@colun_width + @gutter_width);
 }
 
