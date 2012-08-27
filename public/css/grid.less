@@ -5,6 +5,7 @@ body {
 }
 
 #toolbar {
+	.grid(4);
 	background-color: #FFFFCC;
 	float:left;
 }
@@ -21,11 +22,10 @@ body {
 }
 
 #menu{
-	.grid(4);
+	.grid(2);
 	ul {
-		.cell();
 		li {
-			width: 100%;
+			.cell(2);
 		  	padding: 5px 0;	
 			background-color: #EEE;
 			text-align: center;
@@ -35,13 +35,13 @@ body {
 }
 
 #main{
-	.grid(4);
+	.grid_cell(4);
 	background-color: #CCFFCC;
 }
 
 #footer{
 	background-color: #CCFFCC;
-	.cell(4);
+	.grid_cell(4);
 }
 
 /* From http://css-tricks.com/snippets/css/media-queries-for-standard-devices/ */
@@ -51,36 +51,36 @@ body {
 	body {
 		.grid(6,none)
 	}
+	#toolbar{
+		.grid(6);
+	}
 	#toolbar li.search{
 		.cell(4,2);
 	}	
-	#menu{
-		.grid(2);
-	}
 	#main{
-		.grid(4);
+		.grid_cell(4);
 	}
 	#footer{
-		.grid(6);
+		.grid_cell(6);
 	}
 }
 
 /* iPads (portrait) ----------- */
 @media only screen and (min-width : 768px) {
 	body {
-		.grid(12,none)
+		.grid(12,none);
+	}
+	#toolbar {
+		.grid(12);
 	}
 	#toolbar li.search{
 		.cell(4,8);
 	}	
-	#menu{
-		.grid(2);
-	}
 	#main{
-		.grid(10);
+		.grid_cell(10);
 	}
 	#footer{
-		.grid(12);
+		.grid_cell(12);
 	}
 
 }
@@ -94,17 +94,17 @@ body {
 	body {
 		.grid(16,none)
 	}
+	#toolbar{
+		.grid(16);
+	}
 	#toolbar li.search{
 		.cell(4);
 	}	
-	#menu{
-		.grid(2);
-	}
 	#main{
-		.grid(14);
+		.grid_cell(14);
 	}
 	#footer{
-		.grid(16);
+		.grid_cell(16);
 	}
 }
 

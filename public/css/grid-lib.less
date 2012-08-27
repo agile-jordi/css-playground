@@ -25,9 +25,12 @@ body{
   margin: 0 auto;
 }
 
-.grid(@cols: 1, @float:left) {
-
+._grid_width(@cols){
   width: @cols * (@colun_width + @gutter_width);
+}
+
+.grid(@cols: 1, @float:left) {
+  ._grid_width(@cols);
   min-width: @grid_min_width;
   max-width: @grid_max_width;
   margin: 0 auto;
@@ -40,23 +43,28 @@ body{
 }
 
 .cell(){
-  
-}
-
-.cell{
-  overflow: hidden;
-  float:left;
-  display:inline;
-  margin: @cell_margin;
+  .cell(1,0)
 }
 
 .cell(@cols){
   .cell(@cols,0);
 }
 
+._cell_common{
+  overflow: hidden;
+  float:left;
+  display:inline;
+}
+
 .cell(@cols, @leaving){
-  .cell();
+  ._cell_common;
   width: @cols * (@colun_width + @gutter_width) - @gutter_width;
   margin: @cell_margin @cell_margin @cell_margin @cell_margin + @leaving * (@colun_width + @gutter_width);
+}
+
+.grid_cell(@cols:1){
+  ._cell_common;
+  ._grid_width(@cols);  
+  padding: @cell_margin;
 }
 
