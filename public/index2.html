@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Chirper</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <script src="http://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/templating.js"></script>
+    <script src="http://modernizr.com/downloads/modernizr.js"></script>
+    <script src="https://raw.github.com/janl/mustache.js/master/mustache.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var books = {
+                books:[
+                {
+                    title:"Clojure Programming",
+                    author:"Chas Emerick",
+                    cover:"http://t2.gstatic.com/images?q=tbn:ANd9GcTm1b7o1G575NvUAEMfFpgsHluZ2ZTUChOKd_U9F6Nc91flgypbsQ",
+                    comment:"The best Clojure book up to date. Instead of only showing you Clojure magic tricks, it goes step by step making Clojure easier to learn... and making you love the language more and more page after page.",
+                    date:"now"
+                },
+                {
+                    title:"Programming Clojure",
+                    author:"Stuart Halloway",
+                    cover:"http://t1.gstatic.com/images?q=tbn:ANd9GcRocWDmLSks16Cd9_UMmzz04vtEojIKXfwuPe3sV43gTeSs1pYArQ",
+                    comment: "My first book on the Clojure programming language. Althought it is a good book, I must say some parts of the language are introduced rather quickly, jumping from an easy to get introduction to some Clojure tricks quite difficult to understand when learning the language."
+
+                }
+            ]};
+            var headerData = {
+                title:"Jordi Pradel"
+            }
+            Templating.bind($("#header"),headerData);
+            Templating.bind($("#books"),books);
+        });
+    </script>
+</head>
+<body>
+<header id="header">
+    <img>
+    <h1>{{title}}</h1>
+</header>
+
+<div id="left">
+
+<section id="chirp">
+    <h1>Say something...</h1>
+    <form class="chirp">
+        <textarea></textarea>
+        <input type="submit" value="Chirp">
+    </form>
+</section>
+
+<menu class="main">
+    <a href="#">Chirps</a>
+    <a href="#">Following</a>
+    <a href="#">Followers</a>
+</menu>
+
+<section id="copyright">
+    <p>Your awesome copyright statement goes here.</p>
+</section>
+
+</div>
+
+<section id="content">
+    <h1>Boooks!</h1>
+    <ul id="books">
+        {{#books}}
+        <li class="book">
+            <img src="{{cover}}">
+            <div class="data">
+                {{#date}}
+                <date>{{date}}</date>
+                {{/date}}
+                <span class="title">{{title}}</span><span class="author">by {{author}}</span>
+                <p>{{comment}}</p>
+                <menu>
+                    <a href="#">Reply</a>
+                    <a href="#">Retweet</a>
+                    <a href="#">Favorite</a>
+                </menu>
+            </div>
+        </li>
+        {{/books}}
+    </ul>
+</section>
+
+<footer>
+
+</footer>
+</body>
+</html>
