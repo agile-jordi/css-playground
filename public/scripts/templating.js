@@ -6,14 +6,16 @@ var Templating = (function(){
 	    update(template);
 	};
 
-	function update(templates){
-		if(templates.length!=1) console.log("Updating " + templates.length + " templates...")
-        templates.replaceWith(function(){
+	function update(elements){
+		if(elements.length!=1) console.log("Updating " + elements.length + " elements...")
+        elements.replaceWith(function(){
             var data = $(this).data("data");
-            var templateHtml = $("<div>").append($(this).clone()).html();
+            if(!data) console.log("No data found!")
+        	console.log("Data found:",data)
+        	var templateHtml = $(this).data("template") || $("<div>").append($(this).clone()).html();
             var html = Mustache.render(templateHtml,data);
-            console.log("Html: ", html)
-            return html;
+            // console.log("Html: ", html)
+            return $(html).data("data",data).data("template",templateHtml);
         });
 	}
 

@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/layout.css">
     <script src="http://code.jquery.com/jquery-1.8.0.js"></script>
-    <script src="scripts/app.js"></script>
     <script src="scripts/templating.js"></script>
     <script src="http://modernizr.com/downloads/modernizr.js"></script>
     <script src="https://raw.github.com/janl/mustache.js/master/mustache.js"></script>
@@ -32,8 +31,17 @@
             var headerData = {
                 title:"Jordi Pradel"
             }
+            console.log("Bind header");
             Templating.bind($("#header"),headerData);
+            console.log("Bind books");
             Templating.bind($("#books"),books);
+            
+            $("#newBook form").submit(function(){
+                books.books.push({title:$("#newBook form input[name=title]").val(),author:$("#newBook form input[name=author]").val(),comment:$("#newBook textarea").val()});
+                console.log("Update books: ", books)
+                Templating.update($("#books"));
+                return false;
+            });
         });
     </script>
 </head>
@@ -45,11 +53,15 @@
 
 <div id="left">
 
-<section id="chirp">
-    <h1>Say something...</h1>
-    <form class="chirp">
+<section id="newBook">
+    <h1>New book...</h1>
+    <form class="newBook">
+        Title:
+        <input name="title">
+        Author:
+        <input name="author">
         <textarea></textarea>
-        <input type="submit" value="Chirp">
+        <input type="submit" value="Ok!">
     </form>
 </section>
 
@@ -77,11 +89,6 @@
                 {{/date}}
                 <span class="title">{{title}}</span><span class="author">by {{author}}</span>
                 <p>{{comment}}</p>
-                <menu>
-                    <a href="#">Reply</a>
-                    <a href="#">Retweet</a>
-                    <a href="#">Favorite</a>
-                </menu>
             </div>
         </li>
         {{/books}}
